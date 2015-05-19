@@ -66,8 +66,8 @@ RUN wget -O /etc/yum.repos.d/couchbase.repo http://packages.couchbase.com/rpm/co
 RUN yum install -y libcouchbase2-libevent libcouchbase-devel
 RUN pecl install couchbase-1.2.2
 
-echo "extension=json.so" >> /etc/php.ini
-echo "extension=couchbase.so" >> /etc/php.ini
+RUN echo "extension=json.so" >> /etc/php.ini
+RUN echo "extension=couchbase.so" >> /etc/php.ini
 # 
 # Set root path with default.nginx.conf share the local foler in vagrant
 RUN mkdir /vagrant
