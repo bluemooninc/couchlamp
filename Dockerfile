@@ -66,7 +66,6 @@ RUN yum install -y gcc
 RUN wget -O /etc/yum.repos.d/couchbase.repo http://packages.couchbase.com/rpm/couchbase-centos62-x86_64.repo
 RUN yum install -y libcouchbase2-libevent libcouchbase-devel
 RUN yum install -y pcre-devel
-#RUN pecl install couchbase-1.2.2
 RUN pecl install couchbase
 
 RUN echo "extension=json.so" >> /etc/php.ini

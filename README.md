@@ -38,3 +38,22 @@ couchbase.restflush	On	On
 couchbase.serializer	php	php
 couchbase.skip_config_errors_on_connect	Off	Off
 couchbase.view_timeout	75	75
+
+## Sample code
+
+[docker@88ea8d0efb70 www]$ vim /var/www/hello.php 
+<?php
+$cluster = new CouchbaseCluster('192.168.33.10:8091');
+$db = $cluster->openBucket('default');
+$db->upsert('hello', array('name'=>'world','phone'=>'123-456-7890'));
+$res = $db->get('hello');
+var_dump($res->value);
+
+[docker@88ea8d0efb70 www]$ php hello.php 
+PHP Warning:  Module 'json' already loaded in Unknown on line 0
+object(stdClass)#4 (2) {
+  ["name"]=>
+  string(5) "world"
+  ["phone"]=>
+  string(12) "123-456-7890"
+}
