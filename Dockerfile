@@ -1,6 +1,9 @@
 FROM centos:centos6
 MAINTAINER Yoshi Sakai <info@bluemooninc.jp>
 
+# TimeZone
+RUN echo 'ZONE"=Asia/Tokyo"' > /etc/sysconfig/clock
+
 #System Update & Install packages
 RUN yum -y update
 
@@ -68,7 +71,7 @@ RUN yum install -y libcouchbase2-libevent libcouchbase-devel
 RUN yum install -y pcre-devel
 RUN pecl install couchbase
 
-RUN echo "extension=json.so" >> /etc/php.ini
+#RUN echo "extension=json.so" >> /etc/php.ini
 RUN echo "extension=couchbase.so" >> /etc/php.ini
 # 
 # Set root path with default.nginx.conf share the local foler in vagrant
