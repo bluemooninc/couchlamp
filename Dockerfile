@@ -16,7 +16,6 @@ RUN yum -y install nginx
 
 # Installing PHP
 RUN yum -y --enablerepo=remi,remi-php56 install nginx php php-fpm php-mbstring php-common php-mysql php-devel php-pear
-
 RUN yum -y install openssl-devel
 
 # Adding the configuration file of the nginx
@@ -60,11 +59,15 @@ RUN /etc/init.d/sshd stop
 # Setup Mysql
 RUN service mysqld start && \
     /usr/bin/mysqladmin -u root password "root"
+
 # Couchbase
 RUN yum install -y wget
+RUN yum install -y gcc
 RUN wget -O /etc/yum.repos.d/couchbase.repo http://packages.couchbase.com/rpm/couchbase-centos62-x86_64.repo
 RUN yum install -y libcouchbase2-libevent libcouchbase-devel
-RUN pecl install couchbase-1.2.2
+RUN yum install -y pcre-devel
+#RUN pecl install couchbase-1.2.2
+RUN pecl install couchbase
 
 RUN echo "extension=json.so" >> /etc/php.ini
 RUN echo "extension=couchbase.so" >> /etc/php.ini
