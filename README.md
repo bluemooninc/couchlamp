@@ -23,7 +23,7 @@ couchbase
 Version	2.0.7
 ```
 
-## Sample code
+## Sample code 1
 
 [docker@88ea8d0efb70 www]$ vim /vagrant/html/hello.php 
 ```
@@ -44,3 +44,27 @@ object(stdClass)#4 (2) {
   string(12) "123-456-7890"
 }
 ```
+
+## Sample code2 2
+```
+<?php
+/**
+** Couchbase CRUD smaple
+**/
+$myCluster = new CouchbaseCluster('192.168.33.10:8091');
+$myBucket = $myCluster->openBucket();
+$bucketName = 'test_curd';
+$res = $myBucket->insert($bucketName, array('some'=>'value'));
+echo "Creating:";
+echo "Retrieving:";
+$res = $myBucket->get($bucketName);
+var_dump($res);
+echo "Updating:";
+$res = $myBucket->replace($bucketName, array('some'=>'value change'));
+$res = $myBucket->get($bucketName);
+var_dump($res);
+echo "Deleting";
+$res = $myBucket->remove($bucketName);
+var_dump($res);
+```
+
