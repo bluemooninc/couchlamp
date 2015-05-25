@@ -23,7 +23,7 @@ couchbase
 Version	2.0.7
 ```
 
-## Sample code 1
+## Simple Insert Sample
 
 [docker@88ea8d0efb70 www]$ vim /vagrant/html/hello.php 
 ```
@@ -45,7 +45,7 @@ object(stdClass)#4 (2) {
 }
 ```
 
-## Sample code2 2
+## CRUD Sample
 ```
 <?php
 /**
