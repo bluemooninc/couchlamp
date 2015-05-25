@@ -10,7 +10,7 @@ Couchbase PHP client for Dockerfile
 you will check it
 ```
 >ssh -p 9022 docker@192.168.33.10
->vim /var/www/info.php
+>vim /vagrant/html/info.php
   <?php
   phpinfo();
 ```
@@ -25,7 +25,7 @@ Version	2.0.7
 
 ## Sample code
 
-[docker@88ea8d0efb70 www]$ vim /var/www/hello.php 
+[docker@88ea8d0efb70 www]$ vim /vagrant/html/hello.php 
 ```
 <?php
 $cluster = new CouchbaseCluster('192.168.33.10:8091');

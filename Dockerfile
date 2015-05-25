@@ -22,7 +22,6 @@ RUN yum -y --enablerepo=remi,remi-php56 install nginx php php-fpm php-mbstring p
 RUN yum -y install openssl-devel
 
 # Adding the configuration file of the nginx
-ADD default.nginx.conf /etc/nginx/conf.d/default.conf
 ADD nginx.conf /etc/nginx/nginx.conf
 ADD default.conf /etc/nginx/conf.d/default.conf
 ADD www.conf /etc/php-fpm.d/www.conf
@@ -77,7 +76,6 @@ RUN echo "extension=couchbase.so" >> /etc/php.ini
 # Set root path with default.nginx.conf share the local foler in vagrant
 RUN mkdir /vagrant
 RUN mkdir /vagrant/html
-# RUN ln -s /vagrant/html /var/www
 
 ######################################
 #  Supervisord  ########################################
